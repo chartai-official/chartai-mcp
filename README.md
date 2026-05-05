@@ -51,5 +51,13 @@ The remote MCP server exposes Chart Context tools including capabilities,
 symbol search, scans, records, chart packages, supplemental indicator facts,
 watchlist, monitors, feed, and usage.
 
-Chartai returns chart facts and Chart Context. It does not execute trades.
+Use `chartai_inspect_chart_context` as the default tool after a scan. It exposes
+the visual-first Chart Context inspection path: native Core chart first,
+structured Chart Context verification second, then optional indicator and
+price-volume facts. The default chart is the native 1920x1080 image; do not
+request a resized chart unless the agent explicitly needs a different size.
 
+Compatibility tools such as `chartai_get_context` and `chartai_get_chart`
+remain available for older clients and explicit low-level access.
+
+Chartai returns chart facts and Chart Context. It does not execute trades.
