@@ -1,0 +1,22 @@
+{
+  "name": "@chartai/mcp",
+  "version": "0.1.0-beta.1",
+  "description": "Chartai MCP remote server setup helper",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "chartai-mcp": "bin/chartai-mcp.mjs"
+  },
+  "files": [
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}
+
