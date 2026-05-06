@@ -53,6 +53,15 @@ function webBase(opts) {
   return (opts.webBase || process.env.CHARTAI_WEB_URL || DEFAULT_WEB_BASE).replace(/\/+$/, "");
 }
 
+function apiBase(opts) {
+  const fromEnv = (process.env.CHARTAI_API_BASE_URL || "").trim();
+  if (fromEnv) return fromEnv.replace(/\/+$/, "");
+  const base = webBase(opts);
+  if (base === "https://test.chartai.live") return "https://api.test.chartai.live";
+  if (base === "https://chartai.live") return "https://api.chartai.live";
+  return base;
+}
+
 function authValue(opts) {
   if (!opts.inlineKey) return "Bearer ${CHARTAI_AGENT_KEY}";
   const key = (process.env.CHARTAI_AGENT_KEY || process.env.CHARTAI_API_KEY || "").trim();
@@ -92,9 +101,11 @@ async function run({ command, opts }) {
     printJson({
       connect_url: url.toString(),
       env: "CHARTAI_AGENT_KEY",
+      flow: "manual_web_agent_key",
       next: [
         "Open connect_url in a browser.",
-        "Create an agent key.",
+        "Register or log in, verify email, and pay or renew in Chartai Web if needed.",
+        "Create or copy an Agent Key in Chartai Web.",
         "Set CHARTAI_AGENT_KEY in the MCP client environment.",
         "Install the JSON from `chartai-mcp config`."
       ]
@@ -102,7 +113,7 @@ async function run({ command, opts }) {
     return;
   }
   if (command === "status") {
-    const response = await fetch(`${webBase(opts).replace("test.chartai.live", "api.test.chartai.live")}/api/v1/status`);
+    const response = await fetch(`${apiBase(opts)}/api/v1/status`);
     const data = await response.json();
     printJson(data);
     return;
@@ -114,4 +125,3 @@ run(parse(process.argv.slice(2))).catch((error) => {
   process.stderr.write(`chartai-mcp: ${error.message}\n`);
   process.exit(1);
 });
-
