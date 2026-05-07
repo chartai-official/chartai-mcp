@@ -22,3 +22,11 @@ test("connect prints onboarding URL", () => {
   assert.match(result.stdout, /target=mcp/);
 });
 
+test("inline key ignores old CHARTAI_API_KEY env", () => {
+  const result = spawnSync("node", ["bin/chartai-mcp.mjs", "config", "--inline-key"], {
+    encoding: "utf8",
+    env: { ...process.env, CHARTAI_AGENT_KEY: "", CHARTAI_API_KEY: "cak_old" }
+  });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /CHARTAI_AGENT_KEY is required/);
+});

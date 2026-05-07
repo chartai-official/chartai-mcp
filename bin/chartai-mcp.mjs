@@ -66,7 +66,7 @@ function apiBase(opts) {
 
 function authValue(opts) {
   if (!opts.inlineKey) return "Bearer ${CHARTAI_AGENT_KEY}";
-  const key = (process.env.CHARTAI_AGENT_KEY || process.env.CHARTAI_API_KEY || "").trim();
+  const key = (process.env.CHARTAI_AGENT_KEY || "").trim();
   if (!key) throw new Error("CHARTAI_AGENT_KEY is required when --inline-key is used.");
   return `Bearer ${key}`;
 }

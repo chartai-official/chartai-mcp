@@ -59,7 +59,7 @@ capabilities, symbol search, scans, records, context manifests, visual
 confirmation, chart packages, supplemental indicator facts, watchlist,
 monitors, feed, and usage.
 
-Use `chartai_inspect_chart_context` as the default tool after a scan. It exposes
+Use `chartai_inspect_chart_context` as the default tool after `chartai_scan_contexts`. It exposes
 the visual-first Chart Context inspection path: native Core chart first,
 structured Evidence Modules and Recipes second, then optional indicator and
 price-volume facts. The default chart is the native 1920x1080 inspection image
@@ -71,10 +71,7 @@ Use `chartai_get_context_manifest` when a client needs to negotiate supported
 modules, recipes, image delivery, and fallback states before pulling the full
 inspection payload.
 
-Compatibility tools such as `chartai_get_context` and `chartai_get_chart`
-remain available for older clients and explicit low-level access.
-
-Compatibility aliases remain available for older agents, but new docs and
-examples use the standard action names.
+Use `chartai_get_context` and `chartai_get_chart` only for explicit low-level
+access after a context has already been selected.
 
 Chartai returns chart facts and Chart Context. It does not execute trades.
