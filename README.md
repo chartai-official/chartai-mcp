@@ -74,4 +74,10 @@ inspection payload.
 Use `chartai_get_context` and `chartai_get_chart` only for explicit low-level
 access after a context has already been selected.
 
+Agent reference contract: `chartai_scan_contexts` discovers current Chart
+Context; `context_id` is the decision evidence ID returned by Chartai and must
+be treated as opaque; `chartai_get_record` and `chartai_search_records` use
+`detection_id` for historical lifecycle records. Monitor/feed tools are for
+durable watch workflows.
+
 Chartai returns chart facts and Chart Context. It does not execute trades.
