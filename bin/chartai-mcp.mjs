@@ -21,6 +21,8 @@ Options:
   --help, -h
 
 Default config references \${CHARTAI_AGENT_KEY}; it does not print the raw key.
+
+Use "subscription" only for Chartai billing plans and renewals. Durable agent workflows are watchlists, monitors, and feed.
 `;
 }
 

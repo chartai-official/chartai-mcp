@@ -7,6 +7,13 @@ This beta package defaults to Chartai staging:
 - MCP: `https://mcp-staging.chartai.live/mcp`
 - Web/key page: `https://test.chartai.live/app/keys`
 
+Production endpoints will be enabled only after Chartai production launch is
+approved. Public docs and the three GitHub distribution repos are updated
+together when endpoints or runtime contract wording changes.
+
+Use **subscription** only for Chartai billing plans and renewals. Durable agent
+workflows are **watchlists**, **monitors**, and **feed**.
+
 ## Install From GitHub
 
 ```bash
@@ -66,5 +73,8 @@ inspection payload.
 
 Compatibility tools such as `chartai_get_context` and `chartai_get_chart`
 remain available for older clients and explicit low-level access.
+
+Compatibility aliases remain available for older agents, but new docs and
+examples use the standard action names.
 
 Chartai returns chart facts and Chart Context. It does not execute trades.
