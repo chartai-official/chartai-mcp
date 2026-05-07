@@ -7,9 +7,8 @@ This beta package defaults to Chartai staging:
 - MCP: `https://mcp-staging.chartai.live/mcp`
 - Web/key page: `https://test.chartai.live/app/keys`
 
-Production endpoints will be enabled only after Chartai production launch is
-approved. Public docs and the three GitHub distribution repos are updated
-together when endpoints or runtime contract wording changes.
+Use the endpoints shown here for the beta runtime. Production URLs will be
+published in Chartai docs when launch opens.
 
 Use **subscription** only for Chartai billing plans and renewals. Durable agent
 workflows are **watchlists**, **monitors**, and **feed**.
@@ -59,10 +58,11 @@ capabilities, symbol search, scans, records, context manifests, visual
 confirmation, chart packages, supplemental indicator facts, watchlist,
 monitors, feed, and usage.
 
-Use `chartai_inspect_chart_context` as the default tool after `chartai_scan_contexts`. It exposes
-the visual-first Chart Context inspection path: native Core chart first,
-structured Evidence Modules and Recipes second, then optional indicator and
-price-volume facts. The default chart is the native 1920x1080 inspection image
+Use `chartai_inspect_chart_context` as the default tool after
+`chartai_scan_contexts`. It exposes the visual-first Chart Context inspection
+path: native Core chart first, structured Evidence Modules and Recipes second,
+then optional indicator and price-volume facts. The default chart is the native
+1920x1080 inspection image
 with a visible VC code; do not request a resized chart unless the agent
 explicitly needs a different size. If the runtime can see the image, call
 `chartai_confirm_chart_visual_inspection`; if not, report `visual_unverified`.
@@ -74,10 +74,10 @@ inspection payload.
 Use `chartai_get_context` and `chartai_get_chart` only for explicit low-level
 access after a context has already been selected.
 
-Agent reference contract: `chartai_scan_contexts` discovers current Chart
-Context; `context_id` is the decision evidence ID returned by Chartai and must
-be treated as opaque; `chartai_get_record` and `chartai_search_records` use
-`detection_id` for historical lifecycle records. Monitor/feed tools are for
-durable watch workflows.
+Agent flow: use `chartai_scan_contexts` to find current Chart Context, then use
+`chartai_inspect_chart_context` before making a judgment. Keep the returned
+`context_id` as the decision evidence ID. Use `chartai_get_record` and
+`chartai_search_records` with `detection_id` only when you need historical
+lifecycle records. Monitor/feed tools are for durable watch workflows.
 
 Chartai returns chart facts and Chart Context. It does not execute trades.
