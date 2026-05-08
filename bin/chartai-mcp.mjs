@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-const DEFAULT_MCP_URL = "https://mcp-staging.chartai.live/mcp";
-const DEFAULT_WEB_BASE = "https://test.chartai.live";
+const DEFAULT_MCP_URL = "https://mcp.chartai.live/mcp";
+const DEFAULT_WEB_BASE = "https://chartai.live";
 
 function usage() {
-  return `Chartai MCP setup helper (agent beta)
+  return `Chartai MCP setup helper
 
 Usage:
   chartai-mcp config

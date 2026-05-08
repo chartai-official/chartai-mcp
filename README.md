@@ -2,13 +2,10 @@
 
 Setup helper for Chartai's remote MCP server.
 
-This beta package defaults to Chartai staging:
+Default endpoints:
 
-- MCP: `https://mcp-staging.chartai.live/mcp`
-- Web/key page: `https://test.chartai.live/app/keys`
-
-Use the endpoints shown here for the beta runtime. Production URLs will be
-published in Chartai docs when launch opens.
+- MCP: `https://mcp.chartai.live/mcp`
+- Web/key page: `https://chartai.live/app/keys`
 
 Use **subscription** only for Chartai billing plans and renewals. Durable agent
 workflows are **watchlists**, **monitors**, and **feed**.
@@ -40,7 +37,7 @@ key:
 {
   "mcpServers": {
     "chartai": {
-      "url": "https://mcp-staging.chartai.live/mcp",
+      "url": "https://mcp.chartai.live/mcp",
       "headers": {
         "Authorization": "Bearer ${CHARTAI_AGENT_KEY}"
       }
@@ -63,9 +60,9 @@ Use `chartai_inspect_chart_context` as the default tool after
 path: native Core chart first, structured Evidence Modules and Recipes second,
 then optional indicator and price-volume facts. The default chart is the native
 1920x1080 inspection image
-with a visible VC code; do not request a resized chart unless the agent
+with a visible VC code. Do not request a resized chart unless the agent
 explicitly needs a different size. If the runtime can see the image, call
-`chartai_confirm_chart_visual_inspection`; if not, report `visual_unverified`.
+`chartai_confirm_chart_visual_inspection`. If not, report `visual_unverified`.
 
 Use `chartai_get_context_manifest` when a client needs to negotiate supported
 modules, recipes, image delivery, and fallback states before pulling the full

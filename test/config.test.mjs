@@ -9,7 +9,7 @@ test("config prints MCP server JSON without raw key", () => {
   });
   assert.equal(result.status, 0);
   const json = JSON.parse(result.stdout);
-  assert.equal(json.mcpServers.chartai.url, "https://mcp-staging.chartai.live/mcp");
+  assert.equal(json.mcpServers.chartai.url, "https://mcp.chartai.live/mcp");
   assert.equal(json.mcpServers.chartai.headers.Authorization, "Bearer ${CHARTAI_AGENT_KEY}");
 });
 
