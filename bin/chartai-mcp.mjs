@@ -59,7 +59,6 @@ function apiBase(opts) {
   const fromEnv = (process.env.CHARTAI_API_BASE_URL || "").trim();
   if (fromEnv) return fromEnv.replace(/\/+$/, "");
   const base = webBase(opts);
-  if (base === "https://test.chartai.live") return "https://api.test.chartai.live";
   if (base === "https://chartai.live") return "https://api.chartai.live";
   return base;
 }
