@@ -71,6 +71,13 @@ inspection payload.
 Use `chartai_get_context` and `chartai_get_chart` only for explicit low-level
 access after a context has already been selected.
 
+Use `chartai_search_symbols` or `chartai_resolve_symbol` before scanning user
+tickers. Chartai normalizes crypto, US stock, and forex/metals aliases into
+provider canonical symbols such as `BINANCE:TRXUSDT`, `AAPL.US`, and
+`OANDA:EUR_USD`. Symbol discovery means Chartai can normalize the symbol;
+`chartai_scan_contexts` returns current contexts only when a ready native chart
+exists for that symbol/timeframe.
+
 Agent flow: use `chartai_scan_contexts` to find current Chart Context, then use
 `chartai_inspect_chart_context` before making a judgment. Keep the returned
 `context_id` as the decision evidence ID. Use `chartai_get_record` and
