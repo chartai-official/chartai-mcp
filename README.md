@@ -84,7 +84,8 @@ Agent flow: use `chartai_scan_contexts` to find current Chart Context, then use
 `chartai_search_records` with `detection_id` only when you need historical
 lifecycle records. Monitor/feed tools are for durable watch workflows.
 
-When a tool error includes `guidance`, follow `guidance.next_actions` before
-changing symbols, timeframes, ids, or tool names. Do not guess a fallback query.
+Agent-facing tool errors include `guidance`; follow `guidance.next_actions`
+before changing symbols, timeframes, ids, or tool names. Do not guess a fallback
+query.
 
 Chartai returns chart facts and Chart Context. It does not execute trades.
