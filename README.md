@@ -52,7 +52,7 @@ Use `--inline-key` only for local private config files, never for shared logs.
 
 The remote MCP server exposes Composable Chart Context tools including
 capabilities, symbol search, scans, records, context manifests, visual
-confirmation, chart packages, supplemental indicator facts, watchlist,
+confirmation, chart packages, context-bound OHLCV, supplemental indicator facts, watchlist,
 monitors, feed, and usage.
 
 Use `chartai_inspect_chart_context` as the default tool after
@@ -67,6 +67,10 @@ explicitly needs a different size. If the runtime can see the image, call
 Use `chartai_get_context_manifest` when a client needs to negotiate supported
 modules, recipes, image delivery, and fallback states before pulling the full
 inspection payload.
+
+Use `chartai_get_context_ohlcv` after a context is selected when an agent needs
+the candles behind that context's chart window. Treat it as evidence attached
+to the Chart Context, not as a general price-feed tool.
 
 Use `chartai_get_context` and `chartai_get_chart` only for explicit low-level
 access after a context has already been selected.
