@@ -52,14 +52,14 @@ Use `--inline-key` only for local private config files, never for shared logs.
 
 The remote MCP server exposes Composable Chart Context tools including
 capabilities, symbol search, scans, records, context manifests, visual
-confirmation, chart packages, context-bound OHLCV, supplemental indicator facts, watchlist,
-monitors, feed, and usage.
+confirmation, chart packages, context-bound OHLCV, agent chart rendering,
+supplemental indicator facts, watchlist, monitors, feed, and usage.
 
 Use `chartai_inspect_chart_context` as the default tool after
 `chartai_scan_contexts`. It exposes the visual-first Chart Context inspection
-path: native Core chart first, structured Evidence Modules and Recipes second,
-then optional indicator and price-volume facts. The default chart is the native
-1920x1080 inspection image
+path: native Chartai chart first, structured Evidence Modules and Recipes
+second, then optional indicator and price-volume facts. The default chart is the
+native 1920x1080 inspection image
 with a visible VC code. Do not request a resized chart unless the agent
 explicitly needs a different size. If the runtime can see the image, call
 `chartai_confirm_chart_visual_inspection`. If not, report `visual_unverified`.
@@ -72,6 +72,19 @@ Use `chartai_get_context_ohlcv` after a context is selected when an agent needs
 the candles behind that context's chart window. Pass `window: "wide"` for wider
 data-only context around the same Chart Context. Treat it as evidence attached
 to the Chart Context, not as a general price-feed tool.
+
+Use `chartai_render_agent_chart` when an agent has its own live thesis and
+needs Chartai to render a persistent TradingView-based chart from a
+Chartai-supported `symbol`, `interval`, focus `range`, optional source context
+id, structured overlays, and optional studies. This action requires Pro, and each
+accepted request uses 5 Chart Context units. Include the context id to keep
+the original pattern shape. Chartai may add safety margin around the focus range
+so labels and source pattern shapes are not clipped. Send retest
+support/resistance areas as zones, or as two-price Retest support/resistance
+overlays; use Dynamic/Trendline labels only for sloped lines. Do not upload
+OHLCV. The agent may analyze Bybit or another exchange feed independently, then
+pass only the TradingView render source and levels/drawings that should appear
+on the chart.
 
 Use `chartai_get_context` and `chartai_get_chart` only for explicit low-level
 access after a context has already been selected. Pass
