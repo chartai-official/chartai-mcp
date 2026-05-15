@@ -69,11 +69,14 @@ modules, recipes, image delivery, and fallback states before pulling the full
 inspection payload.
 
 Use `chartai_get_context_ohlcv` after a context is selected when an agent needs
-the candles behind that context's chart window. Treat it as evidence attached
+the candles behind that context's chart window. Pass `window: "wide"` for wider
+data-only context around the same Chart Context. Treat it as evidence attached
 to the Chart Context, not as a general price-feed tool.
 
 Use `chartai_get_context` and `chartai_get_chart` only for explicit low-level
-access after a context has already been selected.
+access after a context has already been selected. Pass
+`variant: "original"` to `chartai_get_chart` when the agent needs the persistent
+clean chart variant with only wider-context candles, Volume, and pattern geometry.
 
 Use `chartai_search_symbols` or `chartai_resolve_symbol` before scanning user
 tickers. Chartai normalizes crypto, US stock, and forex/metals aliases into
