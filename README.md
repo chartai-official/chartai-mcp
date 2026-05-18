@@ -73,19 +73,6 @@ the candles behind that context's chart window. Pass `window: "wide"` for wider
 data-only context around the same Chart Context. Treat it as evidence attached
 to the Chart Context, not as a general price-feed tool.
 
-Use `chartai_render_agent_chart` when an agent has its own live thesis and
-needs Chartai to render a persistent TradingView-based chart from a
-Chartai-supported `symbol`, `interval`, focus `range`, optional source context
-id, structured overlays, and optional studies. This action requires Pro, and each
-accepted request uses 5 Chart Context units. Include the context id to keep
-the original pattern shape. Chartai may add safety margin around the focus range
-so labels and source pattern shapes are not clipped. Send retest
-support/resistance areas as zones, or as two-price Retest support/resistance
-overlays; use Dynamic/Trendline labels only for sloped lines. Do not upload
-OHLCV. The agent may analyze Bybit or another exchange feed independently, then
-pass only the TradingView render source and levels/drawings that should appear
-on the chart.
-
 Use `chartai_get_context` and `chartai_get_chart` only for explicit low-level
 access after a context has already been selected. Pass
 `variant: "original"` to `chartai_get_chart` when the agent needs the persistent
