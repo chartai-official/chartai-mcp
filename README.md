@@ -79,13 +79,13 @@ access after a context has already been selected. Pass
 clean chart variant with only wider-context candles, Volume, and pattern geometry.
 
 Use `chartai_search_symbols` or `chartai_resolve_symbol` before scanning user
-tickers. Chartai normalizes crypto, US stock, and forex/metals aliases into
-provider canonical symbols such as `BINANCE:TRXUSDT`, `AAPL.US`, and
-`OANDA:EUR_USD`. Symbol discovery means Chartai can normalize the symbol;
+tickers. Chartai normalizes crypto and forex/metals aliases into provider
+canonical symbols such as `BINANCE:TRXUSDT` and `OANDA:EUR_USD`. Symbol
+discovery means Chartai can normalize the symbol;
 `chartai_scan_contexts` returns current contexts only when a ready native chart
 exists for that symbol/timeframe. No ready context? Chartai can queue a fresh
 scan; wait, then retry the same query.
-`chartai_search_symbols` is paginated across crypto, US stocks, and
+`chartai_search_symbols` is paginated across crypto and
 forex/metals. If the response has `has_more=true`, call it again with
 `cursor=<next_cursor>` until `has_more=false`. Do not treat the first 100
 results as the full catalog.
